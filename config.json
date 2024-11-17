@@ -20,7 +20,7 @@
   "dns": {
     "servers": [
       { "tag": "proxyDns", "address": "tls://8.8.8.8", "detour": "🍤 手动切换" },
-      { "tag": "localDns", "address": "202.102.152.3", "detour": "💡 全球直连" },
+      { "tag": "localDns", "address": "255.255.255.3", "detour": "💡 全球直连" },
       { "tag": "block", "address": "rcode://name_error" }
     ],
     "rules": [
