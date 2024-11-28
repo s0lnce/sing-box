@@ -447,36 +447,6 @@
       "type": "dns"
     }
   ],
-  "outbound_providers": [
-    {
-      "type": "remote",
-      "path": "./providers/Amy.yaml",
-      "tag": "Amy",
-      "download_url": "https://lifcfw.xyz/?L1N1YnNjcmlwdGlvbi9DbGFzaD9zaWQ9NjQ3NjgmdG9rZW49eUlkZmtvQ1pHQ0ombW09NzQ4NTQm",
-      "download_ua": "clash.meta",
-      "download_interval": "24h0m0s",
-      "download_detour": "DIRECT",
-      "healthcheck_url": "https://www.gstatic.com/generate_204",
-      "healthcheck_interval": "10m0s",
-      "outbound_override": {
-        "tag_prefix": "[Amy]"
-      }
-    },
-    {
-      "type": "remote",
-      "path": "./providers/MESL.yaml",
-      "tag": "MESL",
-      "download_url": "https://911tg3rs.com/api/v1/client/subscribe?token=79370bd2d597cf042c5dfdf61e27aaa4",
-      "download_ua": "clash.meta",
-      "download_interval": "24h0m0s",
-      "download_detour": "DIRECT",
-      "healthcheck_url": "https://www.gstatic.com/generate_204",
-      "healthcheck_interval": "10m0s",
-      "outbound_override": {
-        "tag_prefix": "[MESL]"
-      }
-    }
-  ],
   "route": {
     "auto_detect_interface": true,
     "final": "🐟 漏网之鱼",
