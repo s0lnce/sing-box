@@ -112,29 +112,49 @@
     {
       "tag": "🍖 自动选择",
       "type": "urltest",
-      "use_all_providers": true,
-      "excludes": "网站|地址|剩余|过期|时间|有效",
-      "tolerance": 100
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["网站|地址|剩余|过期|时间|有效"]
+        }
+      ],
+      "url": "http://www.gstatic.com/generate_204", 
+      "interval": "10m", 
+      "tolerance": 50
     },
     {
       "tag": "🍤 手动切换",
       "type": "selector",
-      "use_all_providers": true, 
-      "excludes": "(?i)网站|地址|剩余|过期|时间|有效|Expire|Traffic"
+      "outbounds": ["{all}"], 
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["(?i)网站|地址|剩余|过期|时间|有效|Expire|Traffic"]
+        }
+      ]
     },
     { 
       "tag": "🏠 家宽", 
       "type": "selector", 
-      "use_all_providers": true, 
-      "includes": "(?i)家宽|HKT|HKBN|Hinet|Apol|M1|CTM|SoftBank|KDDI|SoNet|Biglobe|SK|KT|LG|Verizon|AT&T|T-mobile|Frontier|Videotron|BT|Virgin|Vodafone|SFR|Turk Telekom|Telekom Malaysia|TM|VNPT|DIGI|JSC Kazakhtelecom|Mongolia Telecom|CAFE|Umniah" 
+      "outbounds": ["{all}"], 
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["(?i)家宽|HKT|HKBN|Hinet|Apol|M1|CTM|SoftBank|KDDI|SoNet|Biglobe|SK|KT|LG|Verizon|AT&T|T-mobile|Frontier|Videotron|BT|Virgin|Vodafone|SFR|Turk Telekom|Telekom Malaysia|TM|VNPT|DIGI|JSC Kazakhtelecom|Mongolia Telecom|CAFE|Umniah"]
+        }
+      ] 
     },
     {
       "tag": "🤖 OpenAI",
       "type": "selector",
-      "outbounds": 
-        "🏠 家宽",
-      "use_all_providers": true, 
-      "includes": "(?i)M1|SoftBank|KDDI|SoNet|Biglobe|Verizon|AT&T|T-mobile|Frontier|Videotron|BT|Virgin|Vodafone|SFR" 
+      "outbounds": ["🏠 家宽", "{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["(?i)M1|SoftBank|KDDI|SoNet|Biglobe|Verizon|AT&T|T-mobile|Frontier|Videotron|BT|Virgin|Vodafone|SFR"]
+        }
+      ] 
     },
     {
       "tag": "📹 YouTube",
@@ -178,10 +198,15 @@
         "🍣 脚盆鸡",
         "🍔 白头鹰",
         "🥘 鱼尾狮",
-        "🍟 约翰牛"
+        "🍟 约翰牛",
+        "{all}"
       ],
-      "use_all_providers": true,
-      "includes": "🇺🇸|US|美国|美" 
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇺🇸|US|美国|美"]
+        }
+      ]
     },
     {
       "tag": "🎥 Disney+",
@@ -201,11 +226,13 @@
     {
       "tag": "📺 巴哈姆特",
       "type": "selector",
-      "outbounds": [
-        "🇨🇳 秃子"
-      ],
-      "use_all_providers": true,
-      "includes": ["🇨🇳|台湾|TW|TAIWAN|Taiwan"]
+      "outbounds": ["🇨🇳 秃子", "{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇨🇳|台湾|TW|TAIWAN|Taiwan"]
+        }
+      ]
     },
     {
       "tag": "😮‍💨 Adobe",
@@ -338,38 +365,68 @@
     {
       "tag": "🍨 蟑螂",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇭🇰|香港|HK|HONGKONG|HongKong"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇭🇰|香港|HK|HONGKONG|HongKong"]
+        }
+      ]
     },
     {
       "tag": "🇨🇳 秃子",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇨🇳|台湾|TW|TAIWAN|Taiwan"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇨🇳|台湾|TW|TAIWAN|Taiwan"]
+        }
+      ]
     },
     {
       "tag": "🍣 脚盆鸡",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇯🇵|日本|JP|JAPAN|Japan"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇯🇵|日本|JP|JAPAN|Japan"]
+        }
+      ]
     },
     {
       "tag": "🥘 鱼尾狮",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇸🇬|新加坡|SG|SINGAPORE|Singapore"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇸🇬|新加坡|SG|SINGAPORE|Singapore"]
+        }
+      ]
     },
     {
       "tag": "🍔 白头鹰",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇺🇸|US|美国|美"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇺🇸|US|美国|美"]
+        }
+      ]
     },
     {
       "tag": "🍟 约翰牛",
       "type": "selector",
-      "use_all_providers": true,
-      "includes": ["🇬🇧|英国|伦敦"]
+      "outbounds": ["{all}"],
+      "filter": [
+        { 
+          "action": "include", 
+          "keywords": ["🇬🇧|英国|伦敦"]
+        }
+      ]
     },
     {
       "tag": "🐟 漏网之鱼",
@@ -388,6 +445,36 @@
     {
       "tag": "dns-out",
       "type": "dns"
+    }
+  ],
+  "outbound_providers": [
+    {
+      "type": "remote",
+      "path": "./providers/Amy.yaml",
+      "tag": "Amy",
+      "download_url": "https://lifcfw.xyz/?L1N1YnNjcmlwdGlvbi9DbGFzaD9zaWQ9NjQ3NjgmdG9rZW49eUlkZmtvQ1pHQ0ombW09NzQ4NTQm",
+      "download_ua": "clash.meta",
+      "download_interval": "24h0m0s",
+      "download_detour": "DIRECT",
+      "healthcheck_url": "https://www.gstatic.com/generate_204",
+      "healthcheck_interval": "10m0s",
+      "outbound_override": {
+        "tag_prefix": "[Amy]"
+      }
+    },
+    {
+      "type": "remote",
+      "path": "./providers/MESL.yaml",
+      "tag": "MESL",
+      "download_url": "https://911tg3rs.com/api/v1/client/subscribe?token=79370bd2d597cf042c5dfdf61e27aaa4",
+      "download_ua": "clash.meta",
+      "download_interval": "24h0m0s",
+      "download_detour": "DIRECT",
+      "healthcheck_url": "https://www.gstatic.com/generate_204",
+      "healthcheck_interval": "10m0s",
+      "outbound_override": {
+        "tag_prefix": "[MESL]"
+      }
     }
   ],
   "route": {
