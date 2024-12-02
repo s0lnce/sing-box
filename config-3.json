@@ -4,89 +4,50 @@
     "level": "info",
     "timestamp": true
   },
+  
   "experimental": {
     "clash_api": {
       "external_controller": "0.0.0.0:9095",
       "external_ui": "/etc/sing-box/ui",
-      "secret": "",
+      "secret": "qichiyu1551",
       "external_ui_download_url": "https://ghp.ci/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "💡 全球直连",
+      "external_ui_download_detour": "🎯 全球直连",
       "default_mode": "rule"
     },
-    "cache_file": {
-      "enabled": true,
-      "path": "/etc/sing-box/cache.db",
-      "store_fakeip": false
+  "cache_file": {
+    "enabled": true,
+    "path": "/etc/sing-box/cache.db",
+    "store_fakeip": false
     }
   },
-  "dns": {
-    "servers": [
-      {
-        "tag": "proxyDns",
-        "address": "https://dns.google/dns-query",
-        "address_resolver": "defaultDns",
-        "address_strategy": "ipv4_only",
-        "detour": "🍤 手动切换"
-      },
-      {
-        "tag": "localDns",
-        "address": "202.102.152.3",
-        "address_resolver": "defaultDns",
-        "address_strategy": "ipv4_only",
-        "detour": "💡 全球直连"
-      },
-      {
-        "tag": "defaultDns",
-        "address": "202.102.152.3",
-        "address_strategy": "ipv4_only",
-        "detour": "💡 全球直连"
-      }
-    ],
-    "rules": [
-      {
-        "outbound": "any",
-        "action": "route",
-        "server": "localDns",
-        "disable_cache": true
-      },
-      {
-        "clash_mode": "Direct",
-        "action": "route",
-        "server": "localDns"
-      },
-      {
-        "clash_mode": "Global",
-        "action": "route",
-        "server": "proxyDns"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "action": "route",
-        "server": "localDns"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "action": "route",
-        "server": "proxyDns"
-      }
-    ],
-    "final": "proxyDns",
-    "strategy": "ipv4_only"
-  },
-  "inbounds": [
-    {
-      "type": "tproxy",
-      "tag": "tproxy-in",
-      "listen": "0.0.0.0",
-      "listen_port": 7895
-    },
-    {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 2080,
-      "users": []
-    }
-  ],
+
+ "dns": 
+ {
+   "servers": 
+   [
+     {"tag": "dns_direct", "address": "219.146.1.66", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "💡 全球直连"},
+     {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🍖 自动选择"}
+   ],
+   "rules": 
+   [
+     {"outbound": "any", "action": "route", "server": "dns_direct", "disable_cache": true},
+     {"clash_mode": "Direct", "action": "route", "server": "dns_direct"},
+     {"clash_mode": "Global", "action": "route", "server": "dns_proxy"},
+     {"rule_set": "geosite-cn", "action": "route","server": "dns_direct"},
+     {"rule_set": "geosite-geolocation-!cn", "action": "route", "server": "dns_proxy"}
+   ],
+   "final": "dns_proxy",
+   "strategy": "ipv4_only"
+},
+
+"inbounds": [
+  {
+    "type": "tproxy",
+    "tag": "tproxy-in",
+    "listen": "0.0.0.0",
+    "listen_port": 7895
+  }
+],
   "outbounds": [
     {
       "tag": "🍖 自动选择",
