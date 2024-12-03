@@ -93,14 +93,6 @@
       "type": "selector",
       "outbounds": [
         "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "(?i)家宽|HKT|HKBN|Hinet|Apol|M1|CTM|SoftBank|KDDI|SoNet|Biglobe|SK|KT|LG|Verizon|AT&T|T-mobile|Frontier|Videotron|BT|Virgin|Vodafone|SFR|Turk Telekom|Telekom Malaysia|TM|VNPT|DIGI|JSC Kazakhtelecom|Mongolia Telecom|CAFE|Umniah"
-          ]
-        }
       ]
     },
     {
